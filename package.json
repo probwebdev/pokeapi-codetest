@@ -1,0 +1,65 @@
+{
+  "private": true,
+  "name": "frontend-codetest-5572951",
+  "description": "Gotta code em all - codetest challenge for BannerFlow",
+  "author": "Robert Harbul <robert.harbul@gmail.com> (https://probablyweb.dev)",
+  "version": "1.0.0",
+  "bugs": "https://github.com/nordicfactory/frontend-codetest-5572951/issues",
+  "license": "MIT",
+  "keywords": [
+    "reactjs",
+    "nextjs",
+    "angular",
+    "typescript",
+    "monorepo"
+  ],
+  "scripts": {
+    "postinstall": "husky install",
+    "browserslist": "pnpm dlx browserslist@latest --update-db",
+    "dev": "pnpm --filter=@codetest/code-em-all-react dev",
+    "start": "pnpm --filter=@codetest/code-em-all-react start",
+    "export": "pnpm turbo run export",
+    "build": "pnpm turbo run build",
+    "lint:format": "pnpm turbo run lint:format",
+    "lint:css": "pnpm turbo run lint:css",
+    "lint:js": "pnpm turbo run lint:js"
+  },
+  "devDependencies": {
+    "@codetest/eslint-config": "workspace:^",
+    "@codetest/lint-staged-config": "workspace:^",
+    "@codetest/prettier-config": "workspace:^",
+    "@types/node": "^18.17.14",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "eslint": "^8.48.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3",
+    "turbo": "^1.10.13",
+    "typescript": "~5.2.2"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "eslint",
+        "prettier",
+        "stylelint"
+      ]
+    }
+  },
+  "packageManager": "pnpm@8.7.1",
+  "engines": {
+    "node": ">=18.12.0",
+    "pnpm": ">=8.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nordicfactory/frontend-codetest-5572951"
+  },
+  "volta": {
+    "node": "18.17.1",
+    "npm": "9.8.1",
+    "pnpm": "8.7.1"
+  }
+}
