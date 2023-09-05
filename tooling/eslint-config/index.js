@@ -104,7 +104,6 @@ const typescript = {
   rules: {
     ...common.rules,
     'comma-dangle': 0,
-    'react/prop-types': 0,
     '@typescript-eslint/semi': 0,
     '@typescript-eslint/indent': 0,
     '@typescript-eslint/member-delimiter-style': 0,

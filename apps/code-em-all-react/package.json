@@ -33,6 +33,7 @@
     "@codetest/stylelint-config": "workspace:^",
     "@codetest/lint-staged-config": "workspace:^",
     "@codetest/prettier-config": "workspace:^",
+    "@codetest/ts-config": "workspace:^",
     "@next/bundle-analyzer": "~13.4.19",
     "@next/eslint-plugin-next": "~13.4.19",
     "autoprefixer": "^10.4.15",

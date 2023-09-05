@@ -10,13 +10,13 @@ importers:
     devDependencies:
       '@codetest/eslint-config':
         specifier: workspace:^
-        version: link:packages/eslint-config
+        version: link:tooling/eslint-config
       '@codetest/lint-staged-config':
         specifier: workspace:^
-        version: link:packages/lint-staged-config
+        version: link:tooling/lint-staged-config
       '@codetest/prettier-config':
         specifier: workspace:^
-        version: link:packages/prettier-config
+        version: link:tooling/prettier-config
       '@types/node':
         specifier: ^18.17.14
         version: 18.17.14
@@ -95,16 +95,19 @@ importers:
         version: 16.2.3(@angular/compiler@16.2.3)(typescript@5.1.6)
       '@codetest/eslint-config':
         specifier: workspace:^
-        version: link:../../packages/eslint-config
+        version: link:../../tooling/eslint-config
       '@codetest/lint-staged-config':
         specifier: workspace:^
-        version: link:../../packages/lint-staged-config
+        version: link:../../tooling/lint-staged-config
       '@codetest/prettier-config':
         specifier: workspace:^
-        version: link:../../packages/prettier-config
+        version: link:../../tooling/prettier-config
       '@codetest/stylelint-config':
         specifier: workspace:^
-        version: link:../../packages/stylelint-config
+        version: link:../../tooling/stylelint-config
+      '@codetest/ts-config':
+        specifier: workspace:^
+        version: link:../../tooling/ts-config
       '@types/jasmine':
         specifier: ~4.3.0
         version: 4.3.5
@@ -147,16 +150,19 @@ importers:
     devDependencies:
       '@codetest/eslint-config':
         specifier: workspace:^
-        version: link:../../packages/eslint-config
+        version: link:../../tooling/eslint-config
       '@codetest/lint-staged-config':
         specifier: workspace:^
-        version: link:../../packages/lint-staged-config
+        version: link:../../tooling/lint-staged-config
       '@codetest/prettier-config':
         specifier: workspace:^
-        version: link:../../packages/prettier-config
+        version: link:../../tooling/prettier-config
       '@codetest/stylelint-config':
         specifier: workspace:^
-        version: link:../../packages/stylelint-config
+        version: link:../../tooling/stylelint-config
+      '@codetest/ts-config':
+        specifier: workspace:^
+        version: link:../../tooling/ts-config
       '@next/bundle-analyzer':
         specifier: ~13.4.19
         version: 13.4.19
@@ -206,7 +212,7 @@ importers:
         specifier: ~5.2.2
         version: 5.2.2
 
-  packages/eslint-config:
+  tooling/eslint-config:
     dependencies:
       '@rushstack/eslint-patch':
         specifier: ^1.3.3
@@ -257,15 +263,15 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/lint-staged-config: {}
+  tooling/lint-staged-config: {}
 
-  packages/prettier-config:
+  tooling/prettier-config:
     dependencies:
       prettier:
         specifier: ^3.0.0
         version: 3.0.3
 
-  packages/stylelint-config:
+  tooling/stylelint-config:
     dependencies:
       prettier:
         specifier: ^3.0.0
@@ -279,6 +285,8 @@ importers:
       stylelint-prettier:
         specifier: ^4.0.2
         version: 4.0.2(prettier@3.0.3)(stylelint@15.10.3)
+
+  tooling/ts-config: {}
 
 packages:
 

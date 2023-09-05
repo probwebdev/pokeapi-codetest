@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': [2, { packageDir: __dirname }],
     'import/extensions': [0, 'never', { css: 'always' }],
+    'react/prop-types': 0,
     'react/function-component-definition': [
       2,
       {

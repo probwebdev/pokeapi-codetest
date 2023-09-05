@@ -37,6 +37,7 @@
     "@codetest/eslint-config": "workspace:^",
     "@codetest/stylelint-config": "workspace:^",
     "@codetest/lint-staged-config": "workspace:^",
+    "@codetest/ts-config": "workspace:^",
     "@codetest/prettier-config": "workspace:^",
     "@angular-devkit/build-angular": "^16.2.1",
     "@angular/cli": "~16.2.1",
