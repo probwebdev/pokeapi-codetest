@@ -1,11 +1,35 @@
 import { trpc } from '~/utils/trpc';
 
 const IndexPage = () => {
-  const result = trpc.greeting.useQuery({ name: 'Rob' });
+  const { data, error, isLoading } = trpc.pokeapi.listPokemons.useQuery({
+    limit: 10,
+    offset: 0,
+  });
+  const { results = [] } = data ?? {};
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error?.message) {
+    return (
+      <div>
+        <h1>{error.message}</h1>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
-      <h1>{result.data?.text ? result.data.text : 'Loading...'}</h1>
+    <div>
+      <ul>
+        {results.map((pokemon) => (
+          <li key={pokemon.name}>{pokemon.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };

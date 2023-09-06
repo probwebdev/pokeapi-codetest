@@ -27,7 +27,7 @@ const nextConfig = {
   experimental: {
     legacyBrowsers: false,
   },
-  transpilePackages: ['@codetest/api'],
+  transpilePackages: ['@codetest/api', '@codetest/pokeapi'],
 };
 
 module.exports = (phase) => {

@@ -1,19 +1,8 @@
-import { z } from 'zod';
+import { pokeapiRouter } from './routers/pokeapi';
+import { createTRPCRouter } from './trpc';
 
-import { publicProcedure, router } from './trpc';
-
-export const appRouter = router({
-  greeting: publicProcedure
-    .input(
-      z.object({
-        name: z.string().nullish(),
-      })
-    )
-    .query(({ input }) => {
-      return {
-        text: `hello ${input.name ?? 'world'}`,
-      };
-    }),
+export const appRouter = createTRPCRouter({
+  pokeapi: pokeapiRouter,
 });
 
 export type AppRouter = typeof appRouter;
