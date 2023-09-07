@@ -2,10 +2,15 @@
   "extends": "@codetest/ts-config/base.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "noEmit": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "out", ".next"]

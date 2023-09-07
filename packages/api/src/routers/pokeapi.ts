@@ -16,6 +16,15 @@ export const pokeapiRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const { offset, limit } = input ?? {};
 
-      return await pokeapi.pokemon.listPokemons(offset, limit);
+      return await pokeapi.pokemon
+        .listPokemons(offset, limit)
+        .then(
+          async (data) =>
+            await Promise.all(
+              data.results.map(
+                async ({ name }) => await pokeapi.pokemon.getPokemonByName(name)
+              )
+            ).then((pokemons) => ({ ...data, results: pokemons }))
+        );
     }),
 });
