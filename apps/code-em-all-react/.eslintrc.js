@@ -24,6 +24,7 @@ module.exports = {
     {
       files: ['./**/*.{ts,tsx}'],
       rules: {
+        '@typescript-eslint/naming-convention': 0,
         'import/no-extraneous-dependencies': [2, { packageDir: __dirname }],
         'import/extensions': [0, 'never', { css: 'always' }],
         'react/prop-types': 0,

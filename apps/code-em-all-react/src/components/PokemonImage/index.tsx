@@ -2,6 +2,7 @@ import { type ImageProps } from 'next/image';
 import Image from 'next/image';
 
 import pngSrc from './imgs/placeholder.png';
+import styles from './pokemon-image.module.css';
 
 export interface PokemonImageProps extends Omit<ImageProps, 'src'> {
   url?: string | null;
@@ -17,7 +18,7 @@ export const PokemonImage = ({
   ...props
 }: PokemonImageProps) => {
   return (
-    <picture>
+    <picture className={styles.pixelated}>
       <Image
         src={url ?? pngSrc}
         width={width}

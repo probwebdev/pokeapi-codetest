@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Link from 'next/link';
+
 import { Skeleton } from '~/components/Skeleton';
 import { PokemonCard } from '~/containers/PokemonCard';
 import { trpc } from '~/utils/trpc';
@@ -61,7 +63,12 @@ const IndexPage = () => {
         {!isLoading &&
           pokemons.map(({ id, name, sprites }) => (
             <li key={id}>
-              <PokemonCard name={name} sprites={sprites} />
+              <Link
+                className="text-current no-underline"
+                href={`/pokemon/${name}`}
+              >
+                <PokemonCard name={name} sprites={sprites} />
+              </Link>
             </li>
           ))}
       </ul>
