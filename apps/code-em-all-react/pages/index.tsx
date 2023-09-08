@@ -1,21 +1,19 @@
+import { useState } from 'react';
+
+import { Skeleton } from '~/components/Skeleton';
 import { PokemonCard } from '~/containers/PokemonCard';
 import { trpc } from '~/utils/trpc';
 
 const IndexPage = () => {
+  const [page, setPage] = useState(0);
+  const [limit] = useState(10);
   const { data, error, isLoading } = trpc.pokeapi.listPokemons.useQuery({
-    limit: 10,
-    offset: 0,
+    limit,
+    offset: page * limit,
   });
 
   const pokemons = data?.results ?? [];
-
-  if (isLoading) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
+  const { count = 0 } = data ?? {};
 
   if (error?.message) {
     return (
@@ -25,15 +23,70 @@ const IndexPage = () => {
     );
   }
 
+  const buttonClassName =
+    'w-16 h-16 flex flex-initial flex-shrink-0 items-center justify-center cursor-pointer border-none';
+
   return (
-    <div>
-      <ul className="flex max-w-content list-none flex-row flex-wrap gap-4">
-        {pokemons.map((pokemon) => (
-          <li key={pokemon.id}>
-            <PokemonCard pokemon={pokemon} />
-          </li>
-        ))}
+    <div className="flex flex-row flex-nowrap items-center justify-between gap-6">
+      <button
+        className={buttonClassName}
+        onClick={() => {
+          setPage((prevState) => prevState - 1);
+        }}
+        disabled={page === 0}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="h-8 w-8"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          />
+        </svg>
+      </button>
+      <ul className="flex max-w-4xl list-none flex-col flex-wrap items-center justify-center gap-4 p-0 sm:flex-row">
+        {isLoading &&
+          // eslint-disable-next-line prefer-spread
+          Array.apply(null, Array(limit)).map((_, index) => (
+            <li key={index}>
+              <Skeleton variant="rounded" width={146} height={176} />
+            </li>
+          ))}
+        {!isLoading &&
+          pokemons.map(({ id, name, sprites }) => (
+            <li key={id}>
+              <PokemonCard name={name} sprites={sprites} />
+            </li>
+          ))}
       </ul>
+      <button
+        className={buttonClassName}
+        onClick={() => {
+          setPage((prevState) => prevState + 1);
+        }}
+        disabled={page * limit > count}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="h-6 w-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </button>
     </div>
   );
 };
