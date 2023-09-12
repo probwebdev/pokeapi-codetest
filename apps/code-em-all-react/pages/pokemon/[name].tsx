@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useRouter } from 'next/router';
 
 import { PokemonImage } from '~/components/PokemonImage';
@@ -12,7 +13,7 @@ export const PokemonDetailsPage = () => {
     name: query,
   });
 
-  const { name, sprites, abilities } = data ?? {};
+  const { name = '', sprites, abilities = [] } = data ?? {};
 
   if (error?.message) {
     return (
@@ -23,21 +24,27 @@ export const PokemonDetailsPage = () => {
   }
 
   return (
-    <div className="flex flex-col self-start">
+    <div
+      className={classNames(
+        'flex w-full max-w-text flex-col gap-2',
+        'bg-violet-50 p-4 shadow-md sm:p-8',
+        'rounded border border-solid border-violet-200'
+      )}
+    >
       {!isLoading && (
         <>
           <div className="flex flex-row flex-nowrap gap-8">
             <PokemonImage
               alt={name}
-              url={sprites.front_default}
+              url={sprites?.front_default}
               width={256}
               height={256}
             />
             <div className="flex flex-col gap-4">
-              <h1 className="capitalize">{name}</h1>
+              <h2 className="capitalize">{name}</h2>
               <div className="flex flex-col gap-2">
-                <h2 className="text-xl">Abilities</h2>
-                <div className="flex flex-row gap-1">
+                <h3 className="text-xl">Abilities</h3>
+                <div className="flex flex-row flex-wrap gap-1">
                   {abilities.map(({ ability, is_hidden }) => (
                     <Tag
                       key={ability.name}
@@ -49,6 +56,10 @@ export const PokemonDetailsPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-xl">Evolutions</h3>
+            <div className="flex flex-row gap-1">TODO</div>
           </div>
         </>
       )}

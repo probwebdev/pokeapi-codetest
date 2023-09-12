@@ -52,7 +52,7 @@ export const pokeapiRouter = createTRPCRouter({
         name: pokemon.name,
         sprites: pokemon.sprites,
         abilities: pokemon.abilities,
-        evolutionChain: evolutionChain?.id,
+        evolutionChain: evolutionChain?.chain ?? [],
       };
     }),
 });
