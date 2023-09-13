@@ -20,6 +20,7 @@
     "start": "pnpm --filter=@codetest/code-em-all-react start",
     "export": "pnpm turbo run export",
     "build": "pnpm turbo run build",
+    "e2e": "pnpm --filter=@codetest/e2e cy:open",
     "lint:format": "pnpm turbo run lint:format",
     "lint:css": "pnpm turbo run lint:css",
     "lint:js": "pnpm turbo run lint:js"
@@ -28,6 +29,7 @@
     "@codetest/eslint-config": "workspace:^",
     "@codetest/lint-staged-config": "workspace:^",
     "@codetest/prettier-config": "workspace:^",
+    "@codetest/ts-config": "workspace:^",
     "@types/node": "^18.17.14",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",

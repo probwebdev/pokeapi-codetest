@@ -32,6 +32,7 @@ const IndexPage = () => {
     <div className="flex flex-row flex-nowrap items-center justify-between gap-6">
       <button
         className={buttonClassName}
+        data-testid="prev-page"
         onClick={() => {
           setPage((prevState) => prevState - 1);
         }}
@@ -52,7 +53,10 @@ const IndexPage = () => {
           />
         </svg>
       </button>
-      <ul className="flex max-w-4xl list-none flex-col flex-wrap items-center justify-center gap-4 p-0 sm:flex-row">
+      <ul
+        className="flex max-w-4xl list-none flex-col flex-wrap items-center justify-center gap-4 p-0 sm:flex-row"
+        data-testid="pokemons-list"
+      >
         {isLoading &&
           // eslint-disable-next-line prefer-spread
           Array.apply(null, Array(limit)).map((_, index) => (
@@ -62,7 +66,7 @@ const IndexPage = () => {
           ))}
         {!isLoading &&
           pokemons.map(({ id, name, sprites }) => (
-            <li key={id}>
+            <li key={id} data-testid="pokemons-list-item">
               <Link
                 className="text-current no-underline"
                 href={`/pokemon/${name}`}
@@ -74,6 +78,7 @@ const IndexPage = () => {
       </ul>
       <button
         className={buttonClassName}
+        data-testid="next-page"
         onClick={() => {
           setPage((prevState) => prevState + 1);
         }}

@@ -15,10 +15,7 @@
     "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint:format": "prettier --check './**/*.{js,jsx,ts,tsx,md,mdx,html,css,json}'",
-    "lint:css": "stylelint './src/**/*.css'",
-    "lint:js": "eslint './**/*.{js,jsx,ts,tsx}'"
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^16.2.4",
