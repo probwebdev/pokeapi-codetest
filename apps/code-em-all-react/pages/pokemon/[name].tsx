@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { PokemonImage } from '~/components/PokemonImage';
@@ -13,7 +14,7 @@ export const PokemonDetailsPage = () => {
     name: query,
   });
 
-  const { name = '', sprites, abilities = [] } = data ?? {};
+  const { name = '', sprites, abilities = [], evolutions = [] } = data ?? {};
 
   if (error?.message) {
     return (
@@ -59,7 +60,22 @@ export const PokemonDetailsPage = () => {
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-xl">Evolutions</h3>
-            <div className="flex flex-row gap-1">TODO</div>
+            {evolutions.length > 0 ? (
+              <ul className="flex list-none flex-row flex-wrap gap-4 p-0">
+                {evolutions.map(({ name, sprites }) => (
+                  <li key={name}>
+                    <Link
+                      className="text-current no-underline"
+                      href={`/pokemon/${name}`}
+                    >
+                      <PokemonImage alt={name} url={sprites.front_default} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span>I am the last one</span>
+            )}
           </div>
         </>
       )}

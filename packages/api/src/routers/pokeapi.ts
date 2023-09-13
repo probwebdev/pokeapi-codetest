@@ -1,7 +1,23 @@
-import { pokeapi } from '@codetest/pokeapi';
+import { pokeapi, type ChainLink } from '@codetest/pokeapi';
 import { z } from 'zod';
 
 import { publicProcedure, createTRPCRouter } from '../trpc';
+
+interface ChainItem {
+  name: string;
+}
+
+const flattenChainLink = (chainLink?: ChainLink) =>
+  (chainLink?.evolves_to ?? []).reduce(
+    (acc: ChainItem[], item): ChainItem[] => {
+      const results = [...acc, { name: item.species.name }];
+      if (item.evolves_to.length > 0) {
+        return results.concat(flattenChainLink(item));
+      }
+      return results;
+    },
+    []
+  );
 
 export const pokeapiRouter = createTRPCRouter({
   listPokemons: publicProcedure
@@ -45,14 +61,35 @@ export const pokeapiRouter = createTRPCRouter({
         ? await pokeapi.evolution.getEvolutionChainById(
             parseInt(evolutionId, 10)
           )
-        : null;
+        : undefined;
+
+      const ancestors = [
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        species.evolves_from_species?.name,
+        species.name,
+      ].filter(Boolean);
+      const chain = flattenChainLink(evolutionChain?.chain).filter(
+        ({ name }) => !ancestors.includes(name)
+      );
+      const evolutions = await Promise.all(
+        chain.map(async (chainItem) => {
+          const relative = await pokeapi.pokemon.getPokemonByName(
+            chainItem.name
+          );
+          return { ...chainItem, sprites: relative.sprites };
+        })
+      );
 
       return {
         id: pokemon.id,
         name: pokemon.name,
         sprites: pokemon.sprites,
         abilities: pokemon.abilities,
-        evolutionChain: evolutionChain?.chain ?? [],
+        species: {
+          id: species.id,
+          name: species.name,
+        },
+        evolutions,
       };
     }),
 });

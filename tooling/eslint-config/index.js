@@ -18,6 +18,7 @@ const common = {
   plugins: [],
   rules: {
     'quotes': 0,
+    'multiline-ternary': 0,
     'no-console': [2, { allow: ['warn', 'error'] }],
     'import/extensions': [2, 'never'],
     'import/prefer-default-export': 0,
