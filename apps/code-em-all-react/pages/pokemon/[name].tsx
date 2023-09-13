@@ -3,8 +3,33 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { PokemonImage } from '~/components/PokemonImage';
+import { Skeleton } from '~/components/Skeleton';
 import { Tag } from '~/components/Tag';
 import { trpc } from '~/utils/trpc';
+
+const LoadingSkeleton = () => (
+  <>
+    <div className="flex flex-row flex-nowrap gap-8">
+      <Skeleton width={256} height={256} />
+      <div className="flex flex-auto flex-col gap-4">
+        <Skeleton width="12ch" height="1.2rem" />
+        <div className="flex flex-col gap-2">
+          <Skeleton width="8ch" height="1.2rem" />
+          <div className="flex flex-row flex-wrap gap-1">
+            <Skeleton width="10ch" height="2rem" />
+            <Skeleton width="10ch" height="2rem" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-col gap-2">
+      <Skeleton width="12ch" height="1.2rem" />
+      <div className="flex list-none flex-row flex-wrap gap-4 p-0">
+        <Skeleton width={128} height={128} />
+      </div>
+    </div>
+  </>
+);
 
 export const PokemonDetailsPage = () => {
   const router = useRouter();
@@ -27,11 +52,12 @@ export const PokemonDetailsPage = () => {
   return (
     <div
       className={classNames(
-        'flex w-full max-w-text flex-col gap-2',
+        'flex min-h-card w-full max-w-card flex-col gap-2',
         'bg-violet-50 p-4 shadow-md sm:p-8',
         'rounded border border-solid border-violet-200'
       )}
     >
+      {isLoading && <LoadingSkeleton />}
       {!isLoading && (
         <>
           <div className="flex flex-row flex-nowrap gap-8">

@@ -7,8 +7,11 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        text: '35em',
+        card: '35em',
         content: '60rem',
+      },
+      minHeight: {
+        card: '35rem',
       },
       screens: {
         sm: '40em',
