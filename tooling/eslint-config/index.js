@@ -9,6 +9,11 @@ const common = {
     browser: true,
     node: true,
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   extends: [
     'standard',
     'prettier',

@@ -58,12 +58,13 @@ const IndexPage = () => {
         data-testid="pokemons-list"
       >
         {isLoading &&
-          // eslint-disable-next-line prefer-spread
-          Array.apply(null, Array(limit)).map((_, index) => (
-            <li key={index}>
-              <Skeleton variant="rounded" width={146} height={176} />
-            </li>
-          ))}
+          Array(limit)
+            .fill(null)
+            .map((_, index) => (
+              <li key={index}>
+                <Skeleton variant="rounded" width={146} height={176} />
+              </li>
+            ))}
         {!isLoading &&
           pokemons.map(({ id, name, sprites }) => (
             <li key={id} data-testid="pokemons-list-item">
