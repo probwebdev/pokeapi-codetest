@@ -1,0 +1,10 @@
+{
+  "extends": "@codetest/ts-config/base.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,10 @@
+*.log
+coverage
+
+# Project
+.turbo
+.swc
+.angular
+out
+dist
+node_modules

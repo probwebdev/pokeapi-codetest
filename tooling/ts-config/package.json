@@ -1,0 +1,15 @@
+{
+  "name": "@codetest/ts-config",
+  "description": "Custom Typescript config",
+  "author": "Robert Harbul <robert.harbul@gmail.com> (https://probablyweb.dev)",
+  "version": "1.0.0",
+  "bugs": "https://github.com/nordicfactory/frontend-codetest-5572951/issues",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "config"
+  ],
+  "files": [
+    "base.json"
+  ]
+}

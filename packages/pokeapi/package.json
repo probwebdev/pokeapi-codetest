@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "@codetest/pokeapi",
+  "description": "Wrapper for pokeapi.co",
+  "author": "Robert Harbul <robert.harbul@gmail.com> (https://probablyweb.dev)",
+  "version": "0.1.0",
+  "bugs": "https://github.com/nordicfactory/frontend-codetest-5572951/issues",
+  "license": "MIT",
+  "keywords": [
+    "pokenode-ts",
+    "pokeapi"
+  ],
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "axios-cache-interceptor": "^1.3.0",
+    "pokenode-ts": "^1.20.0"
+  },
+  "devDependencies": {
+    "@codetest/eslint-config": "workspace:^",
+    "@codetest/lint-staged-config": "workspace:^",
+    "@codetest/prettier-config": "workspace:^",
+    "@codetest/ts-config": "workspace:^",
+    "typescript": "^5.2.2"
+  }
+}
